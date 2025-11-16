@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import ms.thakur.lodhi.common.web.response.ProfileResponse;
+import org.springframework.beans.BeanUtils;
 
 @Data
 public class ProfileDto {
@@ -39,5 +41,13 @@ public class ProfileDto {
     @NotNull
     private String jobTitle;
     private String jobDescription;
+
+
+    public ProfileResponse toResponse(){
+        ProfileResponse response = new ProfileResponse();
+        BeanUtils.copyProperties(this,response);
+        response.setProfileId(this.getId().toString());
+        return response;
+    }
 
 }
