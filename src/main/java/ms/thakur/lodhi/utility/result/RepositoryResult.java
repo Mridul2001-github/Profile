@@ -11,6 +11,16 @@ public class RepositoryResult<T> {
     private boolean success;
     private String message;
 
+    /**
+     * for paginated Results
+     */
+
+    private int pageNumber;
+    private int pageSize;
+    private int totalPages;
+    private long totalItems;
+
+
     RepositoryResult(T result, boolean success, String message) {
         this.result = result;
         this.success = success;
